@@ -4,10 +4,42 @@ STOP_WORDS = [
     'will', 'with'
 ]
 
+# open the file
+
+
+
+# remove the stop words
+
+#go through the file word by word and keep a count of how often each word is used
+print("hello world")
+
+# def remove_from_file(STOP_WORDS):
+#     return [ item for item in file if item != STOP_WORDS]           
+
+# remove_from_file(file, STOP_WORDS)
+
+
+
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    pass
+    with open(file) as text:
+        lines = text.readlines()
+        print(f"{len(lines)} lines in the file.")
+        # print(lines)
+        for line in lines:
+            line = line.replace(",", " ")
+            line = line.replace(".", " ")
+            line = line.replace("_", " ")
+            line = line.replace("?", " ")
+            line = line.replace(":", " ")
+            line = line.replace("’", " ")
+            line = line.replace("-", " ")
+            line = line.lower()
+            line = line.split(' ')
+            # line = line.remove("brim")
+            print(line)
+
 
 
 if __name__ == "__main__":
@@ -25,3 +57,6 @@ if __name__ == "__main__":
     else:
         print(f"{file} does not exist!")
         exit(1)
+
+
+
