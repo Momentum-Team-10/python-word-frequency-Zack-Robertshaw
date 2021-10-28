@@ -1,4 +1,4 @@
-from os import linesep, sep
+# from os import linesep, sep
 
 
 STOP_WORDS = [
@@ -7,30 +7,15 @@ STOP_WORDS = [
     'will', 'with'
 ]
 
-# open the file
-
-
-
-# remove the stop words
-
 #go through the file word by word and keep a count of how often each word is used
+
 print("hello world")
-
-# def remove_from_file(STOP_WORDS):
-#     return [ item for item in file if item != STOP_WORDS]           
-
-# remove_from_file(file, STOP_WORDS)
-
-
-
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
     with open(file) as text:
         lines = text.read()
-        # print(f"{len(lines)} lines in the file.")
-        # print(lines)
-        # for line in lines:
+# remove punctuation
         lines = lines.replace(",", " ")
         lines = lines.replace(".", " ")
         lines = lines.replace("_", " ")
@@ -40,10 +25,10 @@ def print_word_freq(file):
         lines = lines.replace("-", " ")
         lines = lines.replace("\n", " ")
         lines = lines.lower()
-
+# divide the single string into an iterable list 
         lines = lines.split(' ')
 
-
+# long way of removing STOP_WORDS
 # correct use of a for loop would work here with STOP_WORDS
         while 'a' in lines:
             lines.remove('a')
@@ -98,15 +83,24 @@ def print_word_freq(file):
         while '' in lines:
             lines.remove('')
 
-            
+
+        lines = sorted(lines, key=lines.count, reverse=True) 
+
+        final = {}
+
+        for word in lines:
+            final[word] = lines.count(word)         
 
 
 
 
-        # while 'a' == False: 
-        #     lines.remove('a')
 
-        print(lines)
+        print(final)
+            # print(f"{word} | {final.get(word)} {'*' * int(final.get(word))}")
+      
+
+
+
 
 
 if __name__ == "__main__":
